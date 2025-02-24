@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IKEA.DAL.Models.Departments
 {
-    internal class Department : ModelBase
+    public class Department : ModelBase
     {
         public string Name { get; set; } = null!;
         public string Code { get; set; } = null!;

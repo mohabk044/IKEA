@@ -14,7 +14,7 @@ namespace IKIA.PL
             builder.Services.AddControllersWithViews();
             builder.Services.AddDbContext<ApplicationDbContext>((optionsBuilder =>
             {
-                optionsBuilder.UseSqlServer("DefaultConnection");
+                optionsBuilder.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
             }));
             //-----------------------------------------------------------------------------------------------------------------------
             //builder.Services.AddScoped<ApplicationDbContext>();
