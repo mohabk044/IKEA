@@ -1,0 +1,32 @@
+﻿using IKEA.DAL.Models.Departments;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace IKEA.DAL.Presistance.Data
+{
+    internal class ApplicationDbContext : DbContext
+    {
+        public ApplicationDbContext() : base()
+        {
+
+        }
+        override protected void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer("Server=.;Database=IKEA;Trusted_Connection=True;TrustServerCertificate=True;");
+        }
+        override protected void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+        }
+
+        #region DbSet
+        public DbSet<Department> Departments { get; set; }
+        #endregion
+
+    }
+}
