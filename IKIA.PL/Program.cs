@@ -1,3 +1,6 @@
+using IKEA.DAL.Presistance.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace IKIA.PL
 {
     public class Program
@@ -6,6 +9,24 @@ namespace IKIA.PL
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            #region Configure
+
+            builder.Services.AddControllersWithViews();
+            builder.Services.AddDbContext<ApplicationDbContext>((optionsBuilder =>
+            {
+                optionsBuilder.UseSqlServer("DefaultConnection");
+            }));
+            //-----------------------------------------------------------------------------------------------------------------------
+            //builder.Services.AddScoped<ApplicationDbContext>();
+            //builder.Services.AddScoped<DbContextOptions<ApplicationDbContext>>((ServiceProvider)=>
+            //{
+            //    var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
+            //    optionsBuilder.UseSqlServer("Server=.;Database=IKEA;Trusted_Connection=True;TrustServerCertificate=True;\"");
+            //    var options = optionsBuilder.Options;
+            //    return options;
+            //});
+            //-----------------------------------------------------------------------------------------------------------------------
+            #endregion
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
