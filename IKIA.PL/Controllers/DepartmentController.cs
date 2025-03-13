@@ -13,9 +13,15 @@ namespace IKIA.PL.Controllers
         {
             _departmentService = departmentService;
         }
+
+        #region Index
+        [HttpGet]//dep/index
         public IActionResult Index()
         {
-            return View();
-        }
+            var departments = _departmentService.GetAllDepartments();
+            return View(departments);
+        } 
+        #endregion
+
     }
 }

@@ -26,7 +26,7 @@ namespace IKEA.BLL.Services
                 Id = department.Id,
                 Name = department.Name,
                 Code = department.Code,
-                Description = department.Description,
+                //Description = department.Description,
                 CreationDate = department.CreationDate
 
 
